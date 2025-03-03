@@ -7,21 +7,27 @@
 
 h1
 {
-    font-family: "Inter";
+    font-family: 'Courier New', Courier, monospace;
     padding-top: 1rem;
-
 }
 
 p
 {
-    font-family: "Inter";
+    font-family: 'Courier New', Courier, monospace;
     padding-top: 1rem;
 }
 
-body
+.title-div
+{
+    padding-left: 2rem;
+    position: absolute;
+}
+
+.outer-div
 {
     display: flex;
     justify-content: center;
+    padding-top: 10rem;
 
 }
 
@@ -33,10 +39,45 @@ body
     text-align: left;
     max-width: 30%;
     min-width: 30%;
+
+    border-top: 2px solid black;
+    display: block;
 }
+
+
 
 #userInput
 {
     /* p does not support newline by default */
     white-space: pre-wrap;
+}
+
+#userInput::after
+{
+    content: "|"; /* Cursor */
+    display: inline-block;
+    font-size: 20px;
+    animation: cursorBlink 1000ms steps(1, start) infinite;
+}
+
+@keyframes cursorBlink
+{
+    50% { opacity: 0; }
+}
+
+
+.typewriter
+{
+    width: 22ch;
+    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@keyframes typing
+{
+from
+{
+    width: 0
+}
 }

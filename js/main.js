@@ -1,5 +1,6 @@
 // Define corruption character set (block Unicode characters)
 const corruptionCharacters = ["▒", "▓", "░", "█", "▀", "▄", "▌", "▐", "▞", "▟", "■", "▛", "▏", "▆"];
+const titleChars = ["■", "░"];
 
 let userText = []; // array of dicts
 let textField; // output
@@ -9,6 +10,7 @@ function DisplayDate()
     const dateId = document.getElementById("date");
     const currentDate = new Date().toLocaleDateString("en-US");
     dateId.innerText = currentDate;
+    glitchTitle();
 }
 
 // run these on window load
@@ -16,7 +18,7 @@ window.onload = function ()
 {
     DisplayDate();
     textField = document.getElementById("userInput");
-    setInterval(checkCorruption, 3000); // check corruption every 3 seconds
+    setInterval(checkCorruption, 7000); // check corruption every 3 seconds
 };
 
 function CaptureInput(event)
@@ -73,7 +75,7 @@ function checkCorruption()
         (
             // if char age > 10 seconds
             timeElapsed >= 10 &&
-            Math.random() < 0.05 && // 5% chance per second
+            Math.random() < 0.10 && // 10% chance
             obj.char.trim() !== "" && // ignore spaces and newline
             !corruptionCharacters.includes(obj.char) // dont corrupt corrupted chars
         )
@@ -85,6 +87,35 @@ function checkCorruption()
 
         return obj;
     });
-
+    console.log("Checking corruption")
     updateDisplay();
 }
+
+function glitchTitle()
+{
+    let titleElement = document.getElementById("title");
+    if (!titleElement) return;
+
+    let originalText = titleElement.textContent.split(""); // title to char arr
+    let glitchText = [...originalText];
+
+    let numGlitches = Math.floor(Math.random() * 3) + 1; // pick 1 - 3 chars
+
+    // select char and replace
+    for (let i = 0; i < numGlitches; i++)
+    {
+        let randomIndex = Math.floor(Math.random() * glitchText.length);
+        glitchText[randomIndex] = titleChars[Math.floor(Math.random() * titleChars.length)];
+    }
+
+    titleElement.textContent = glitchText.join(""); // apply corruption
+
+    setTimeout(() =>
+    {
+        titleElement.textContent = originalText.join(""); // restore after 300ms
+    }, 
+    300);
+}
+
+// glitch  every 2-5 seconds
+setInterval(glitchTitle, Math.random() * (5000 - 2000) + 2000);
