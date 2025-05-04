@@ -56,19 +56,7 @@ pip install -r requirements.txt
 
 ---
 
-## 5. Create a `.env` File
-
-In the root folder of the project, create a file named `.env` and add:
-
-```env
-DATABASE_URL=urls.db
-```
-
-This tells the app where to store your SQLite database.
-
----
-
-## 6. Run the App
+## 5. Run the App
 
 ```bash
 python app.py
@@ -82,7 +70,7 @@ You should see output like:
 
 ---
 
-## 7. Open the App in Your Browser
+## 6. Open the App in Your Browser
 
 Go to:  
 [http://127.0.0.1:5000](http://127.0.0.1:5000)
