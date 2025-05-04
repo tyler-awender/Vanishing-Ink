@@ -1,83 +1,141 @@
-*
-{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-h1
-{
-    font-family: 'Courier New', Courier, monospace;
-    padding-top: 1rem;
+h1 {
+  font-family: "Courier New", Courier, monospace;
+  padding-top: 1rem;
 }
 
-p
-{
-    font-family: 'Courier New', Courier, monospace;
-    padding-top: 1rem;
+p {
+  font-family: "Courier New", Courier, monospace;
+  padding-top: 1rem;
 }
 
-.title-div
-{
-    padding-left: 2rem;
-    position: absolute;
+.title-div {
+  padding-left: 2rem;
+  position: absolute;
 }
 
-.outer-div
-{
-    display: flex;
-    justify-content: center;
-    padding-top: 10rem;
-
+.outer-div {
+  display: flex;
+  justify-content: center;
+  padding-top: 10rem;
 }
 
-.content-container
-{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-    max-width: 30%;
-    min-width: 30%;
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  max-width: 30%;
+  min-width: 30%;
 
-    border-top: 2px solid black;
-    display: block;
+  border-top: 2px solid black;
+  display: block;
 }
 
-
-
-#userInput
-{
-    /* p does not support newline by default */
-    white-space: pre-wrap;
+#userInput {
+  /* p does not support newline by default */
+  white-space: pre-wrap;
 }
 
-#userInput::after
-{
-    content: "|"; /* Cursor */
-    display: inline-block;
-    font-size: 20px;
-    animation: cursorBlink 1000ms steps(1, start) infinite;
+#userInput::after {
+  content: "|"; /* Cursor */
+  display: inline-block;
+  font-size: 20px;
+  animation: cursorBlink 1000ms steps(1, start) infinite;
 }
 
-@keyframes cursorBlink
-{
-    50% { opacity: 0; }
+.confirmation {
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    color: #eee;
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 0.5rem 1rem;
+    border: 1px solid #888;
+    border-radius: 4px;
+    opacity: 0;
+    position: fixed;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 1000;
+    transition: opacity 0.6s ease;
+  }
+  
+  .confirmation.visible {
+    opacity: 1;
+  }
+  
+  
+
+@keyframes cursorBlink {
+  50% {
+    opacity: 0;
+  }
 }
 
-
-.typewriter
-{
-    width: 22ch;
-    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
-    white-space: nowrap;
-    overflow: hidden;
+.typewriter {
+  width: 22ch;
+  animation: typing 2s steps(22), blink 0.5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-@keyframes typing
-{
-from
-{
-    width: 0
+@keyframes typing {
+  from {
+    width: 0;
+  }
 }
+
+.archive {
+  margin-top: 2rem;
+  font-family: "Courier New", monospace;
+  color: #666;
+  border-top: 1px dashed #aaa;
+  padding-top: 1rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.archive-entry {
+  margin-bottom: 1.5rem;
+  opacity: 0.7;
+  white-space: pre-wrap;
+  border-left: 2px solid #888;
+  padding-left: 1rem;
+}
+
+.hidden {
+  display: none;
+}
+
+button#archiveToggle {
+  margin-top: 1rem;
+  font-family: "Courier New", monospace;
+  padding: 0.5rem 1rem;
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button#submitJournal {
+  margin-top: 1rem;
+  font-family: "Courier New", monospace;
+  padding: 0.5rem 1rem;
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+button#submitJournal:disabled {
+  background-color: #444;
+  cursor: not-allowed;
 }

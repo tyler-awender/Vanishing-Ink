@@ -10,23 +10,39 @@
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="{{url_for('static', filename='global.css')}}" />
-    <script src="js/corruptionMap.js"></script>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='global.css')}}"
+    />
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
     <script src="../static/main.js"></script>
   </head>
 
-  <body>  
+  <body>
+    <script>
+      if (!localStorage.getItem("hasVisited")) {
+        window.location.href = "/intro";
+      }
+    </script>
     <div class="title-div">
-        <h1 id="title">Vanishing Ink</h1>
-        <p>Tyler Awender</p>
+      <h1 id="title">Vanishing Ink</h1>
+      <p>Tyler Awender</p>
     </div>
 
     <div class="outer-div">
       <div class="content-container">
-        <h1 class="typewriter ">Your Journal</h1>
+        <h1 class="typewriter">Your Journal</h1>
         <p id="date" class="typewriter"></p>
         <p id="userInput"></p>
+
+        <div class="actions">
+          <button id="submitJournal" disabled>Wait...</button>
+          <button id="archiveToggle">Show Archive</button>
+        </div>
+
+        <div id="archive" class="archive hidden"></div>
       </div>
     </div>
+    <div id="submissionMessage" class="confirmation">Memory submitted.</div>
   </body>
 </html>

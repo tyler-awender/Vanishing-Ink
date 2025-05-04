@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vanishing Ink</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='global.css') }}"
+    />
+    <style>
+      body {
+        font-family: "Courier New", monospace;
+        background: black;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+        padding: 2rem;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1rem;
+      }
+
+      p {
+        max-width: 600px;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #ccc;
+      }
+
+      button {
+        margin-top: 2rem;
+        background-color: white;
+        color: black;
+        border: none;
+        padding: 0.5rem 1.25rem;
+        font-family: "Courier New", monospace;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.2s ease;
+      }
+
+      button:hover {
+        background-color: #ddd;
+      }
+      body {
+        transition: opacity 1s ease;
+      }
+
+      body.fade-out {
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Vanishing Ink</h1>
+
+    <p>
+      This is a journal designed to forget you.<br />
+      But not all at once.
+    </p>
+
+    <p>
+      Begin typing, and your words will slowly degrade.<br />
+      Wait long enough, and it will erode, just as memories do
+    </p>
+
+    <p>
+      When you're ready, submit it. But know this:<br />
+      What you submit is not what you wrote. It's what remains.
+    </p>
+
+    <p>
+      The <strong>Archive</strong> stores every submission.<br />
+      There are no names, no edits, no deletes.<br />
+      Only fragments of things people once needed to say.
+    </p>
+
+    <p class="note">
+      This is a space for private expression. Write whatever you feel, and watch
+      it fade. There is no saving, only submitting.
+    </p>
+
+    <button id="startBtn">Begin Writing</button>
+    <script>
+      document.getElementById("startBtn").addEventListener("click", () => {
+        localStorage.setItem("hasVisited", "true");
+
+        // clear any old journal text
+        localStorage.removeItem("corruptedJournal");
+
+        document.body.classList.add("fade-out");
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 800);
+      });
+    </script>
+  </body>
+</html>
