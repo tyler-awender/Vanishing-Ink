@@ -1,10 +1,6 @@
 # Vanishing Ink
 Vanishing Ink is an interactive and text-based project where user inputted text gradually corrupts over time.
 
-# URL Shortener
-
-A Flask application that lets you convert long URLs into short, links. Built with Python, SQLite, and Flask 
-
 ---
 
 
